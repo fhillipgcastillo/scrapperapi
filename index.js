@@ -6,18 +6,18 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
-mongoose
-  .connect(
-    'mongodb://mongo:27017/pythonbeautifulsoup_mongo_1',
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+// mongoose
+//   .connect(
+//     'mongodb://mongo:27017/',
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log(err));
 
-  app.get('/', (req, res) => {
-    res.render('index', { "hello":"world" });
-  });
+app.get('/', (req, res) => {
+  res.json({"error":null,"payload":{ "hello":"world" }});
+});
 
-  const port = 8081;
+const port = 8081;
 
-  app.listen(port, () => console.log('API Server running at 8081...'));
+app.listen(port, '0.0.0.0', () => console.log('API Server running at 8081...'));
