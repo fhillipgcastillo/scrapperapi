@@ -6,16 +6,17 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
-// mongoose
-//   .connect(
-//     'mongodb://mongo:27017/',
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => console.log('MongoDB Connected'))
-//   .catch(err => console.log(err));
+mongoose
+  .connect(
+    // 'mongodb://mongo:27017/',
+    (process.env.MONGO_ENDPOINT || 'mongodb://mongo:27017/')+'corotosscrapper',
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-  res.json({"error":null,"payload":{ "hello":"world" }});
+  res.json({"error":null,"payload":{ "hello":"world 2" }});
 });
 
 const port = 8081;
